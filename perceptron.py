@@ -50,15 +50,7 @@ def fit(X,Y):
     #plt.show()
     return errors,w
 
-errors,w=fit(X,Y)
-print(w)
-# show error plot 
-errors=np.array(errors)
-# x = np.arange(0,1000,1)
-# print(errors)
-# y = np.array(errors)
-# plt.plot(x, y)
-# plt.show()
+
 
 
 def predict(X_test):
@@ -87,7 +79,7 @@ def evaluate_error(X,Y):
     
 
 
-#train_dataset
+#test_dataset
 test=pd.read_csv('linear_data_test.csv')
 Xt1=test['X1']
 Xt2=test[' X2']
@@ -99,6 +91,7 @@ X_t=np.concatenate((Xt1,Xt2),axis=1)
 Yt=test[' Y']
 Yt=np.array(Yt)
 Y_t=Yt.reshape(200,1)
+#output
 y_pr=predict(X_t)
 acc_test=evaluate_accuracy(X_t,Y_t)
 acc_train=evaluate_accuracy(X,Y)
@@ -108,3 +101,11 @@ print('test accuracy :',acc_test)
 print('train accuracy :',acc_train)
 print('test error :',error_test)
 print('train error :',error_train)
+errors,w=fit(X,Y)
+print(w)
+# show error plot 
+errors=np.array(errors)
+x = np.arange(0,1000,1)
+y = np.array(errors)
+plt.plot(x, y)
+plt.show()
