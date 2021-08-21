@@ -1,3 +1,4 @@
+from os import error
 import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
@@ -78,7 +79,11 @@ def evaluate_accuracy(X,Y):
             count+=1
     accuracy=count/len(Y)
     return accuracy
-     
+
+def evaluate_error(X,Y):
+    y_predict = predict(X)
+    error = np.mean(np.abs(Y - y_predict))
+    return error
     
 
 
@@ -97,5 +102,9 @@ Y_t=Yt.reshape(200,1)
 y_pr=predict(X_t)
 acc_test=evaluate_accuracy(X_t,Y_t)
 acc_train=evaluate_accuracy(X,Y)
+error_test=evaluate_error(X_t,Y_t)
+error_train=evaluate_error(X,Y)
 print('test accuracy :',acc_test)
 print('train accuracy :',acc_train)
+print('test error :',error_test)
+print('train error :',error_train)
